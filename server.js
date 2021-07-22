@@ -9,11 +9,17 @@ dotenv.config({path: './config/config.env'})
 const connectDB = require('./config/db')
 connectDB();
 
+//route files 
+const auth = require('./routes/auth')
+
 const app = express();
 
 //bodyparser
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+
+//Mount Routers
+app.use('/api/v1/auth', auth)
 
 //dev logging middleware
 if (process.env.NODE_ENV === 'development') {
