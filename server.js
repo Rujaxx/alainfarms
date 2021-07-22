@@ -1,6 +1,7 @@
 const express = require('express')
 const dotenv = require('dotenv')
 const morgan = require('morgan')
+const cookieParser = require('cookie-parser')
 
 //load env vars
 dotenv.config({path: './config/config.env'})
@@ -17,6 +18,8 @@ const app = express();
 //bodyparser
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+//cookie parser
+app.use(cookieParser())
 
 //Mount Routers
 app.use('/api/v1/auth', auth)
