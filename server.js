@@ -3,6 +3,7 @@ const dotenv = require('dotenv')
 const morgan = require('morgan')
 const cookieParser = require('cookie-parser')
 const cors = require('cors');
+const errorHandler = require('./middleware/error')
 
 //load env vars
 dotenv.config({path: './config/config.env'})
@@ -33,6 +34,9 @@ app.post('/', function (req, res) {
 
 //Mount Routers
 app.use('/api/v1/auth', auth)
+
+//ErrorHandler
+app.use(errorHandler)
 
 //dev logging middleware
 if (process.env.NODE_ENV === 'development') {
