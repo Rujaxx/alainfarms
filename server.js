@@ -2,6 +2,7 @@ const express = require('express')
 const dotenv = require('dotenv')
 const morgan = require('morgan')
 const cookieParser = require('cookie-parser')
+const cors = require('cors');
 
 //load env vars
 dotenv.config({path: './config/config.env'})
@@ -20,6 +21,15 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 //cookie parser
 app.use(cookieParser())
+
+// app.options('*', cors())
+
+// Enable CORS
+app.use(cors());
+
+app.post('/', function (req, res) {
+    res.send('POST request to the homepage')
+  })
 
 //Mount Routers
 app.use('/api/v1/auth', auth)
