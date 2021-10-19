@@ -23,8 +23,6 @@ app.use(express.urlencoded({extended: false}));
 //cookie parser
 app.use(cookieParser())
 
-// app.options('*', cors())
-
 // Enable CORS
 app.use(cors());
 
